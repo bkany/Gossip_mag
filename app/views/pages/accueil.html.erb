@@ -1,0 +1,22 @@
+<div class="jumbotron jumbotron-fluid text-red">
+	<div class="transbox">
+		<h1 class="text-center">The Gossip Project</h1>
+		<h4 class="text-center">Si vous aussi, vous voulez connaître tous les potins du moment pour ne pas passer pour un bleu à la machine à café, alors vous êtes au bon endroit !</h4>
+	</div>
+	
+</div>
+
+
+<div class="container">
+		<h1 class="text-center">Bienvenue à toi, visiteur !</h1>
+		<br/>
+</div>
+
+
+<div class="container">
+
+	<% @potins.each do |p| %>
+		<p>Auteur : <%= User.all.find(p.user_id).first_name%> / Titre : <%= p.title %> - <a href="/potin/<%= p.id%>" >Voir le potin</a></p>
+	<% end %>
+
+</div>

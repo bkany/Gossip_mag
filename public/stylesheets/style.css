@@ -1,0 +1,26 @@
+.jumbotron, .jumbotron-fluid {
+	height: 350px;
+	background-image: url("/images/accueil.jpg");
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+}
+
+div.transbox {
+  margin: 30px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
+}
+
+div.transbox p {
+  margin: 5%;
+  font-weight: bold;
+  color: #000000;
+}
+
+.card-img-top {
+	height: 400px;
+	background-size: cover;
+}

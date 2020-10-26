@@ -1,0 +1,8 @@
+ <section class="jumbotron text-center">
+        <div class="container">
+        	<h1>Potin n°<%= @id %> !</h1>
+        	<h4>Titre du potin : <%= @potin_title %></h4>
+        	<h4>Auteur du potin : <a href='/user/<%= @potin_user_id %>'><%= @potin_author_first_name %> <%= @potin_author_last_name %></a></h4>
+        	<p>Contenu du potin : <%= @potin_content %></p>
+        </div>
+</section>
