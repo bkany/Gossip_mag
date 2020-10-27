@@ -10,7 +10,7 @@
 require 'faker'
 
 10.times do
-	User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,  description: Faker::Lorem.sentence, email: Faker::Internet.email, age: rand(20..40))
+	User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,  description: Faker::Lorem.sentence, email: Faker::Internet.email, age: rand(20..40))
 end
 
 10.times do
@@ -22,9 +22,9 @@ end
 end
 
 20.times do
-	Potin.create!(title: Faker::Lorem.word, content: Faker::Lorem.sentence, user_id: User.all.sample.id)
+	Potin.create(title: Faker::Lorem.word, content: Faker::Lorem.sentence, user_id: User.all.sample.id)
 end
 
 Potin.all.each do |p|
-	Taggossip.create!(tag_id: Tag.all.sample.id, potin_id: p.id)
+	Taggossip.create(tag_id: Tag.all.sample.id, potin_id: p.id)
 end

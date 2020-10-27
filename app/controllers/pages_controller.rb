@@ -4,10 +4,6 @@ class PagesController < ApplicationController
 		@potins = Potin.all
 	end
 
-	def contact
-	
-	end
-
   def team
 
   end

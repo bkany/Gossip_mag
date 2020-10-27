@@ -12,11 +12,15 @@
 		<br/>
 </div>
 
+<div class="container">
+		<p>Si tu souhaites ajouter un potin, c'est par <a href="/potins/new">ici</a> !</p>
+		<br/>
+</div>
 
 <div class="container">
 
 	<% @potins.each do |p| %>
-		<p>Auteur : <%= User.all.find(p.user_id).first_name%> / Titre : <%= p.title %> - <a href="/potin/<%= p.id%>" >Voir le potin</a></p>
+		<p>Auteur : <%= User.all.find(p.user_id).first_name%> / Titre : <%= p.title %> - <a href="/potins/<%= p.id%>" >Voir le potin</a></p>
 	<% end %>
 
 </div>
