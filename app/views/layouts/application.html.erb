@@ -46,6 +46,9 @@
   <div class="container" style="padding-top: 5rem;">
     <%= yield %>
   </div>
+  
+  <% if flash[:notice]%>
+  	<%=flash[:notice]%>
     
     
     

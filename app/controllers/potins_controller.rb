@@ -23,7 +23,10 @@ class PotinsController < ApplicationController
 
   def create
 		@potin = Potin.new('title' => params[:title], 'content' => params[:content], 'user_id' => params[:user_id])
-		@potin.save
+		if (@potin.save)
+			flash.notice = "C'est enregistré !"
+			redirect_to(@potin)
+		end
   end
   
 end
