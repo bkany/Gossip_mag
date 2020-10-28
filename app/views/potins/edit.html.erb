@@ -1,9 +1,22 @@
  <section class="jumbotron text-center">
-        <div class="container">
-        	<h1>Edition du Potin n°<%= @potin.id %> !</h1>
-        	<h4>Titre du potin : <%= @potin.title %></h4>
-        	<p>Le remplacer par : </p>
-        	<p>Contenu du potin : <%= @potin.content %></p>
-        	<p>Le remplacer par : </p>
+        <h1>Edition du Potin n°<%= @potin.id %> !</h1>
+        <%= form_for @potin do |p| %>
+        
+        <h4>Titre du potin : <%= @potin.title %></h4>
+        
+        <div class="form-group">
+        	<label>Titre du potin</label>
+        	<%= p.text_field :title, class: 'form-control' %>
         </div>
+
+        <p>Contenu du potin : <%= @potin.content %></p>
+        <div class="form-group">
+        	<label>Contenu du potin</label>
+        	<%= p.text_field :content, class: 'form-control' %>
+        </div>
+        	
+				<div class="form-group">
+					<button type="submit">Modifier le potin</button>
+				</div>
+				<% end %>
 </section>

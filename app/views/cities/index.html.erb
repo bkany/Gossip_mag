@@ -1,0 +1,7 @@
+ <section class="jumbotron text-center">
+ 	<div class="container">
+		<% @cities.each do |c| %>
+			<p><a href="/cities/<%= c.id%>" ><%= c.name %></a></p>
+		<% end %>
+  </div>
+</section>

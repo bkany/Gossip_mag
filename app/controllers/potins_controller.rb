@@ -23,10 +23,33 @@ class PotinsController < ApplicationController
 
   def create
 		@potin = Potin.new('title' => params[:title], 'content' => params[:content], 'user_id' => params[:user_id])
+		
 		if (@potin.save)
 			flash.notice = "C'est enregistré !"
 			redirect_to(@potin)
 		end
+		
   end
+  
+  def update
+  	@potin = Potin.find(params[:id])
+  	if @potin.update(potin_params)
+  		redirect_to(@potin)
+  	else
+  		render :edit
+  	end
+  end
+  
+  def destroy 
+  	@potin = Potin.find(params[:id])
+  	@potin.destroy
+		redirect_to "/"
+  end
+  
+  private
+  
+  def potin_params
+	 	potin_params = params.require(:potin).permit(:title, :content, @potin.user_id)
+	end
   
 end

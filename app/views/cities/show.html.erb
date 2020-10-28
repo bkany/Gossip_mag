@@ -1,0 +1,16 @@
+ <section class="jumbotron text-center">
+ 	<div class="container">
+  	<h1>Ville n°<%= params[:id] %> !</h1>
+   	<h4>Ville : <%= @city.name %></h4>
+    <h5>Zip_code : <%= @city.zip_code %></h5>
+   </div>
+</section>
+
+<section class="jumbotron text-center">
+ 	<div class="container">  
+    <% @city_potins.each do |p| %>
+		<p>Potin n°<%= p.id%> - Titre : <%= p.title %> - <a href="/potins/<%= p.id%>" >Voir le potin</a></p>
+	<% end %>
+    
+  </div>
+</section>

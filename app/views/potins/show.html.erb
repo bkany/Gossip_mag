@@ -4,8 +4,36 @@
         	<h4>Titre du potin : <%= @potin_title %></h4>
         	<h4>Auteur du potin : <a href='/user/<%= @potin_user_id %>'><%= @potin_author_first_name %> <%= @potin_author_last_name %></a></h4>
         	<p>Contenu du potin : <%= @potin_content %></p>
+        	
         </div>
         
         <div class="container">
-        	<a href="/potins/<%= params[:id] %>/edit" class="btn btn-primary">Editer le potin</a>
+        	<a href="/potins/<%= params[:id] %>/edit" class="btn btn-primary">Editer le potin</a>  
+        	
+        	<a href="" class="btn btn-primary" data-confirm="Êtes vous sûr ?" data-method="delete">Supprimer le potin</a>
+        </div>
+        
+ </section>       
+        
+<section class="jumbotron text-center">
+ <div class="container">
+ 
+        <h1>Laisser un commentaire</h1>
+        <%= form_for @potin do |c| %>
+        
+        	<div class="form-group">
+        	<label>Titre du commentaire</label>
+        	<%= c.text_field :title, class: 'form-control' %>
+        	</div>
+
+        	<div class="form-group">
+        		<label>Commentaire :</label>
+        		<%= c.text_field :content, class: 'form-control' %>
+        	</div>
+        	
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary">Ajouter un commentaire</button>
+					</div>
+				<% end %>
+  </div>      	
 </section>

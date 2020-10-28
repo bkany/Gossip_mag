@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+	belongs_to :city
 	has_many :potins
 	
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
