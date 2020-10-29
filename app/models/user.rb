@@ -17,6 +17,9 @@ class User < ApplicationRecord
 		uniqueness: { case_sensitive: false },
 		length: { minimum: 4, maximum: 254 },
 		format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "Please enter a valide email"  }
+		
+	validates :password_digest,
+		presence: true
 end
 
 
