@@ -21,7 +21,7 @@ class PotinsController < ApplicationController
   	end
   end
   
-   def new
+  def new
 		@potin = Potin.new
   end
 
@@ -33,7 +33,7 @@ class PotinsController < ApplicationController
 			redirect_to(@potin)
 		else 
 			flash[:danger] = "Ton potin n'a pas été sauvegardé. "
-			redirect_to 'potins/new'
+			redirect_to '/potins/new'
 		end
   end
   

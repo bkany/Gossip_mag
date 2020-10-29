@@ -7,11 +7,15 @@
         	
         </div>
         
-        <div class="container">
-        	<a href="/potins/<%= params[:id] %>/edit" class="btn btn-primary">Editer le potin</a>  
-        	
+        
+        
+        
+        		<div class="container">
+        		<% if session[:user_id] == @potin_user_id %>
+        		<a href="/potins/<%= params[:id] %>/edit" class="btn btn-primary">Editer le potin</a>  
         	<a href="" class="btn btn-primary" data-confirm="Êtes vous sûr ?" data-method="delete">Supprimer le potin</a>
 <br /><br />
+<% end %>
         	<a href="/" class="btn btn-primary">Revenir à la page d'accueil</a>  
         </div>
         
@@ -23,8 +27,13 @@
 <section class="jumbotron text-center">
  <div class="container">
  
-<% if session[:id] != nil %>
+<% if !session[:user_id] %>
+
+		 		<h2>Connecte toi pour laisser un commentaire</h2>
+ 		<a href="/sessions/new" class="btn btn-primary">Se connecter</a>
  
+ <% else %>	
+  			
         <h1>Laisser un commentaire</h1>
         <%= form_for @potin do |c| %>
         
@@ -42,11 +51,6 @@
 						<button type="submit" class="btn btn-primary">Ajouter un commentaire</button>
 					</div>
 				<% end %>
- 
- 			<% else %>	
- 			
-		 		<h2>Connecte toi pour laisser un commentaire</h2>
- 		<a href="/sessions/new" class="btn btn-primary">Se connecter</a>
 
 				
 		<% end %>		
