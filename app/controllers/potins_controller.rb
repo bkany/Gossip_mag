@@ -14,7 +14,11 @@ class PotinsController < ApplicationController
   end
   
   def edit
-  	@potin = Potin.find(params[:id])
+  	if params[:id] = session[:id]
+  		@potin = Potin.find(params[:id])
+  	else
+  		redirect_to(@potin)
+  	end
   end
   
    def new
@@ -22,30 +26,32 @@ class PotinsController < ApplicationController
   end
 
   def create
-		@potin = Potin.new('title' => params[:title], 'content' => params[:content], 'user_id' => params[:user_id])
+		@potin = Potin.new('title' => params[:title], 'content' => params[:content], 'user_id' => session[:user_id])
 		
 		if (@potin.save)
 			flash[:success] = "Ton potin est enregistré !"
 			redirect_to(@potin)
 		else 
 			flash[:danger] = "Ton potin n'a pas été sauvegardé. "
-			redirect_to 'potin/new'
+			redirect_to 'potins/new'
 		end
   end
   
   def update
   	@potin = Potin.find(params[:id])
-  	if @potin.update(potin_params)
+  	if @potin.user_id = session[:user_id] && @potin.update(potin_params)
   		redirect_to(@potin)
   	else
   		render :edit
   	end
   end
   
-  def destroy 
+  def destroy
   	@potin = Potin.find(params[:id])
-  	@potin.destroy
-		redirect_to "/"
+  	if @potin.user_id = session[:user_id]
+  		@potin.destroy
+			redirect_to "/"
+		end
   end
   
   
@@ -53,7 +59,7 @@ class PotinsController < ApplicationController
   private
   
   def potin_params
-	 	potin_params = params.require(:potin).permit(:title, :content, @potin.user_id)
+	 	potin_params = params.require(:potin).permit(:title, :content, session[:user_id])
 	end
   
 end

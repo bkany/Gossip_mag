@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   resources :users
   
 	resources :cities
+	
+	resources :sessions
   
 end

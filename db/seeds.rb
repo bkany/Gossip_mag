@@ -17,7 +17,7 @@ end
 puts "Remplissage de la table City - OK"
 
 10.times do
-	u = User.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,  description: Faker::Lorem.sentence, email: Faker::Internet.email, age: rand(20..40), password_digest: Faker::Lorem.word, city_id: City.all.sample.id)
+	u = User.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,  description: Faker::Lorem.sentence, email: Faker::Internet.email, age: rand(20..40), password: Faker::Lorem.word, city_id: City.all.sample.id)
 	u.save
 end
 
@@ -45,12 +45,8 @@ end
 puts "Affectation d'un Tag à un Potin - OK"
 
 15.times do
-	c = Comment.new(title: Faker::Lorem.characters(number: 8), content: Faker::Lorem.sentence, user_id: User.all.sample.id)
+	c = Comment.new(title: Faker::Lorem.characters(number: 8), content: Faker::Lorem.sentence, user_id: User.all.sample.id, potin_id: Potin.all.sample.id)
 	c.save
-end
-
-Comment.all.each do |c|
-	c.potin_id = Potin.all.sample.id
 end
 
 puts "Remplissage de la table Comment - OK"

@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-		@comment = Comment.new('title' => params[:title], 'content' => params[:content], 'potin_id' => params[:potin_id], 'user_id' => params[:user_id])
+		@comment = Comment.new('title' => params[:title], 'content' => params[:content], 'potin_id' => params[:potin_id], 'user_id' => session[:id])
 		
 		if (@comment.save)
 			flash[:success] = "Ton potin est enregistré !"

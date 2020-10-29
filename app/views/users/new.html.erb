@@ -27,7 +27,7 @@
       <br /> <br />    
       
      	<%= label_tag 'Password' %>
-      <%= text_field_tag 'password_digest', @user.password_digest %>
+      <%= text_field_tag 'password', @user.password %>
       <br /> <br />          
       
       Quelle est ta ville  ? <%= select_tag 'city_id', options_from_collection_for_select(City.all, :id, :name, selected = nil) %>

@@ -13,10 +13,6 @@
       <%= label_tag 'Contenu' %>
       <%= text_area_tag 'content', @potin.content %>
       <br /> <br />
-
-      <%= label_tag 'Utilisateur' %>
-      <%= text_field_tag 'user_id', @potin.user_id %>
-      <br /> <br />
       
       <%= select_tag 'tag', options_from_collection_for_select(Tag.all, :id, :title, selected = nil) %>
       <br /> <br />

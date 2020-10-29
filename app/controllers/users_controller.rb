@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
   
   def create
-  	@user = User.new('first_name' => params[:first_name], 'last_name' => params[:last_name], 'description' => params[:description], 'email' => params[:email], 'age' => params[:age].to_i, 'password_digest' => params[:password_digest], 'city_id' => params[:city_id])
+  	@user = User.new('first_name' => params[:first_name], 'last_name' => params[:last_name], 'description' => params[:description], 'email' => params[:email], 'age' => params[:age].to_i, 'password' => params[:password], 'city_id' => params[:city_id])
   	
   	if (@user.save)
 			flash[:success] = "Ton compte est bien créé !"
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-	 	user_params = params.require(:user).permit(:first_name, :last_name, :description, :email, :age, :password_digest, :city_id)
+	 	user_params = params.require(:user).permit(:first_name, :last_name, :description, :email, :age, :password, :city_id)
 	end
   
 end

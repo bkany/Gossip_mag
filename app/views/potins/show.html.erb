@@ -16,9 +16,14 @@
         </div>
         
  </section>       
-        
+
+
+
+
 <section class="jumbotron text-center">
  <div class="container">
+ 
+<% if session[:id] != nil %>
  
         <h1>Laisser un commentaire</h1>
         <%= form_for @potin do |c| %>
@@ -37,5 +42,13 @@
 						<button type="submit" class="btn btn-primary">Ajouter un commentaire</button>
 					</div>
 				<% end %>
+ 
+ 			<% else %>	
+ 			
+		 		<h2>Connecte toi pour laisser un commentaire</h2>
+ 		<a href="/sessions/new" class="btn btn-primary">Se connecter</a>
+
+				
+		<% end %>		
   </div>      	
 </section>

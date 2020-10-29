@@ -34,19 +34,29 @@
       <li class="nav-item">
         <a class="nav-link" href="/contact">Contact</a>
       </li>
+<% if session[:id] != nil %>
+	    <li class="nav-item">
+        <a class="nav-link" href="/users/<%= session[:id] %>">Profil de <%= User.find_by(id: session[:id]).first_name %></a>
+      </li>
       <li class="nav-item">
-        <a class="nav-link" href="/users/login">Se connecter</a>
-      </li
+      <%= link_to "Se déconnecter", session_path(session.id), method: :delete, :confirm=>"Êtes vous sûr de vouloir vous déconnecter ?"%>
+      </li>
+<% else %>
+	    <li class="nav-item">
+        <a class="nav-link" href="/sessions/new">Se connecter</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="/users/new">S'inscrire</a>
-      </li      
+      </li>  
     </ul>
+<% end %>
 
   </div>
 </nav>
   
   <% flash.each do |name, msg| %>
-  	<div class="alert alert-<%= name %>"><%= msg %></div>
+  	<div class="alert alert-<%= name %> alert-dismissible fade show" role="<%= name %>"><%= msg %>
+  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"></div>
   <% end %>
   
   <div class="container" style="padding-top: 3rem;">
