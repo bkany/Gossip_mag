@@ -25,10 +25,12 @@ class PotinsController < ApplicationController
 		@potin = Potin.new('title' => params[:title], 'content' => params[:content], 'user_id' => params[:user_id])
 		
 		if (@potin.save)
-			flash.notice = "C'est enregistré !"
+			flash[:success] = "Ton potin est enregistré !"
 			redirect_to(@potin)
+		else 
+			flash[:danger] = "Ton potin n'a pas été sauvegardé. "
+			redirect_to 'potin/new'
 		end
-		
   end
   
   def update
@@ -45,6 +47,8 @@ class PotinsController < ApplicationController
   	@potin.destroy
 		redirect_to "/"
   end
+  
+  
   
   private
   

@@ -17,11 +17,12 @@
       <%= label_tag 'Utilisateur' %>
       <%= text_field_tag 'user_id', @potin.user_id %>
       <br /> <br />
-
+      
+      <%= select_tag 'tag', options_from_collection_for_select(Tag.all, :id, :title, selected = nil) %>
+      <br /> <br />
+      
       <%= submit_tag "Création du potin" %>
 
     <% end %>
-        
-    <a href="/potins/create" class="btn btn-primary">Valider</a>
         
 </section>

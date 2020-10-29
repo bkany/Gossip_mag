@@ -2,7 +2,7 @@
         <div class="container">
         	<h1>Potin n°<%= params[:id] %> !</h1>
         	<h4>Titre du potin : <%= @potin_title %></h4>
-        	<h4>Auteur du potin : <a href='/user/<%= @potin_user_id %>'><%= @potin_author_first_name %> <%= @potin_author_last_name %></a></h4>
+        	<h4>Auteur du potin : <a href='/users/<%= @potin_user_id %>'><%= @potin_author_first_name %> <%= @potin_author_last_name %></a></h4>
         	<p>Contenu du potin : <%= @potin_content %></p>
         	
         </div>
@@ -11,6 +11,8 @@
         	<a href="/potins/<%= params[:id] %>/edit" class="btn btn-primary">Editer le potin</a>  
         	
         	<a href="" class="btn btn-primary" data-confirm="Êtes vous sûr ?" data-method="delete">Supprimer le potin</a>
+<br /><br />
+        	<a href="/" class="btn btn-primary">Revenir à la page d'accueil</a>  
         </div>
         
  </section>       

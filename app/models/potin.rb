@@ -1,5 +1,6 @@
 class Potin < ApplicationRecord
 	belongs_to :user
+	belongs_to :comment
 	has_many :tags, through: :taggossips
 	
 	validates :title,

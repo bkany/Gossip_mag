@@ -10,10 +10,7 @@ Rails.application.routes.draw do
   
   resources :team
   
-  get '/welcome(/:name)', to: 'pages#welcome'
-  
-  get '/user/:id', to: 'users#user'
-  #resources :users
+  resources :users
   
 	resources :cities
   

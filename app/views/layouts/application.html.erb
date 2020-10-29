@@ -19,7 +19,7 @@
   <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Gossips mag</a>
+  <a class="navbar-brand" href="/">Gossips mag</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -34,22 +34,26 @@
       <li class="nav-item">
         <a class="nav-link" href="/contact">Contact</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/login">Se connecter</a>
+      </li
+      <li class="nav-item">
+        <a class="nav-link" href="/users/new">S'inscrire</a>
+      </li      
     </ul>
-    <span class="navbar-text">
-      Le magazine Potins du moment
-    </span>
+
   </div>
 </nav>
   
-
+  <% flash.each do |name, msg| %>
+  	<div class="alert alert-<%= name %>"><%= msg %></div>
+  <% end %>
   
-  <div class="container" style="padding-top: 5rem;">
+  <div class="container" style="padding-top: 3rem;">
     <%= yield %>
   </div>
   
-  <% if flash[:notice]%>
-  	<%=flash[:notice]%>
-  <% end %>
+
     
     
     

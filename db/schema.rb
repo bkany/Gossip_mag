@@ -22,6 +22,28 @@ ActiveRecord::Schema.define(version: 2020_10_26_085800) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "commentofcomments", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "comment_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_commentofcomments_on_comment_id"
+    t.index ["user_id"], name: "index_commentofcomments_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "potin_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["potin_id"], name: "index_comments_on_potin_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "potins", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -52,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_10_26_085800) do
     t.text "description"
     t.string "email"
     t.integer "age"
+    t.string "password_digest"
     t.bigint "city_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

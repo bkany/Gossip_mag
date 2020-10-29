@@ -1,6 +1,8 @@
 class User < ApplicationRecord
 	belongs_to :city
 	has_many :potins
+	has_many :comments
+	has_secure_password
 	
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 	

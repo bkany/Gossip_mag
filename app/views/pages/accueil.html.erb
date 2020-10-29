@@ -24,3 +24,18 @@
 	<% end %>
 
 </div>
+
+
+<% @potins.each do |p| %>
+<div class="card border-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header">Potin n°<%= p.id %></div>
+  <div class="card-body text-dark">
+    <h5 class="card-title">par <%= User.all.find(p.user_id).first_name%></h5>
+    <p class="card-text">Titre : <%= p.title %>
+    <br />
+    <a href="/potins/<%= p.id%>" >Voir le potin</a></p>
+    <br />
+    Nombre de commentaires : <%= p.comment.count %>
+  </div>
+</div>
+	<% end %>
