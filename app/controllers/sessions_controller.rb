@@ -13,7 +13,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy 
-  	@session.delete(:user_id)
+  	session.delete(:user_id)
+  	flash[:notice] = "Tu es désormais déconnecté. Reviens quand tu veux !"
   	redirect_to "/"
   end
   
