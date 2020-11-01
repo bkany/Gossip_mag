@@ -43,10 +43,18 @@
       </li> 
  <% else %>
 	    <li class="nav-item">
-        <a class="nav-link" href="/users/<%= session[:user_id] %>">Profil de <%= User.find_by(id: session[:user_id]).first_name %></a>
-      </li>
-      <li class="nav-item">
-      <%= link_to "Se déconnecter", session_path(session[:user_id]), method: :delete, :confirm=>"Êtes vous sûr de vouloir vous déconnecter ?"%>
+        
+        <div class="dropdown">
+  				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    			Compte de <%= User.find_by(id: session[:user_id]).first_name %>
+  				</button>
+  				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    				<a class="dropdown-item" href="/users/<%= session[:user_id] %>">Voir mon profil</a>
+    				<div class="dropdown-divider"></div>
+    				<%= link_to "Se déconnecter", session_path(session[:user_id]), method: :delete, :confirm=>"Êtes vous sûr de vouloir vous déconnecter ?"%>
+  				</div>
+				</div>
+      
       </li>
  
     </ul>

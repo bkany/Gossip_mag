@@ -9,6 +9,7 @@ class CreationTablesPrincipales < ActiveRecord::Migration[6.0]
       t.string :email
       t.integer :age
       t.string :password_digest
+      t.string :remember_digest
       t.belongs_to :city, index: true
       t.timestamps
     end

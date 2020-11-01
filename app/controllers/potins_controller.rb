@@ -4,6 +4,7 @@ class PotinsController < ApplicationController
   	@posts = Potin.all
   end
   
+  
   def show 
  		@potin = Potin.find(params[:id])
 		@potin_title = @potin.title
@@ -12,6 +13,7 @@ class PotinsController < ApplicationController
 		@potin_content = @potin.content
 		@potin_user_id = @potin.user_id
   end
+  
   
   def edit
   	if params[:id] = session[:id]
@@ -29,8 +31,7 @@ class PotinsController < ApplicationController
 		@potin = Potin.new('title' => params[:title], 'content' => params[:content], 'user_id' => session[:user_id])
 		
 		if (@potin.save)
-			flash[:success] = "Ton potin est enregistré !"
-			redirect_to(@potin)
+			redirect_to @potin, flash: {success: "Ton potin est enregistré !"}
 		else 
 			flash[:danger] = "Ton potin n'a pas été sauvegardé. "
 			redirect_to '/potins/new'
@@ -40,7 +41,7 @@ class PotinsController < ApplicationController
   def update
   	@potin = Potin.find(params[:id])
   	if @potin.user_id = session[:user_id] && @potin.update(potin_params)
-  		redirect_to(@potin)
+  		redirect_to @potin, flash: {success: "Ton potin a été mis à jour !"}
   	else
   		render :edit
   	end
@@ -50,7 +51,7 @@ class PotinsController < ApplicationController
   	@potin = Potin.find(params[:id])
   	if @potin.user_id = session[:user_id]
   		@potin.destroy
-			redirect_to "/"
+			redirect_to "/", flash: {success: "Ton potin a bien été supprimé !"}
 		end
   end
   

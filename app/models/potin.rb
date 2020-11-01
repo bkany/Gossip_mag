@@ -5,7 +5,7 @@ class Potin < ApplicationRecord
 	
 	validates :title,
 		presence: true,
-		length: { minimum: 3, maximum: 14 }
+		length: { minimum: 3, maximum: 30 }
 		
 	validates :content,
 		presence: true

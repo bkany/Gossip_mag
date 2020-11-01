@@ -25,9 +25,10 @@ class UsersController < ApplicationController
   end
   
   def create
-  	@user = User.new('first_name' => params[:first_name], 'last_name' => params[:last_name], 'description' => params[:description], 'email' => params[:email], 'age' => params[:age].to_i, 'password' => params[:password], 'city_id' => params[:city_id])
+  	user = User.new('first_name' => params[:first_name], 'last_name' => params[:last_name], 'description' => params[:description], 'email' => params[:email], 'age' => params[:age].to_i, 'password' => params[:password], 'city_id' => params[:city_id])
   	
-  	if (@user.save)
+  	if (user.save)
+  		login(user)
 			flash[:success] = "Ton compte est bien créé !"
 			redirect_to "/"
 		end

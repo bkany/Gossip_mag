@@ -34,6 +34,18 @@
  
  <% else %>	
   			
+  			<% if Comment.all.select{ |com| com.potin_id == params[:id].to_i } %>
+  					<% Comment.all.select{ |com| com.potin_id == params[:id].to_i }.each do |c| %>
+  						<p>Commentaire écrit par <%= User.find(c.user_id).first_name %> <%= User.find(c.user_id).last_name %> le <%= c.created_at.day %>-<%= c.created_at.month %>-<%= c.created_at.year %></p>
+  						<h5><%= c.title%></h5>
+  						<p><%= c.content %></p>
+  						<p>-------------------------------</p>
+  						<br />
+  					<% end %>
+  			<% end %>
+  			
+  			
+  			<div class="container">
         <h1>Laisser un commentaire</h1>
         <%= form_for @potin do |c| %>
         
@@ -51,6 +63,7 @@
 						<button type="submit" class="btn btn-primary">Ajouter un commentaire</button>
 					</div>
 				<% end %>
+				</div>
 
 				
 		<% end %>		
